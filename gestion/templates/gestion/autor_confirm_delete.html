@@ -1,0 +1,24 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Eliminar Autor{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-7 col-xl-6">
+        <div class="card border-danger shadow-sm">
+            <div class="card-header bg-danger-subtle">
+                <h1 class="h5 mb-0">Confirmar eliminacion</h1>
+            </div>
+            <div class="card-body">
+                <p class="mb-1">Esta seguro de eliminar al autor <strong>{{ autor.nombre }}</strong>?</p>
+                <p class="text-muted small mb-4">Esta accion no se puede deshacer y tambien eliminara sus libros asociados.</p>
+                <form method="post" class="d-flex gap-2">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Confirmar</button>
+                    <a href="{% url 'lista_autores' %}" class="btn btn-outline-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
