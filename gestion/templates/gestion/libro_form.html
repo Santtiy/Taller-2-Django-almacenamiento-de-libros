@@ -1,0 +1,25 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Formulario de Libro{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-7 col-xl-6">
+        <div class="card shadow-sm">
+            <div class="card-header bg-white">
+                <h1 class="h5 mb-0">Datos del libro</h1>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="d-flex gap-2 mt-3">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <a href="{% url 'lista_libros' %}" class="btn btn-outline-secondary">Volver a libros</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
