@@ -4,6 +4,10 @@ from .forms import AutorForm, LibroForm
 from .models import Autor, Libro
 
 
+def inicio(request):
+	return redirect('lista_autores')
+
+
 def lista_autores(request):
 	autores = Autor.objects.all()
 	return render(request, 'gestion/lista_autores.html', {'autores': autores})

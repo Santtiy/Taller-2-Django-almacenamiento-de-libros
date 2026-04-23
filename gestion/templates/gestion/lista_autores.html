@@ -1,0 +1,39 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Autores{% endblock %}
+
+{% block content %}
+<h1 class="mb-3">Autores</h1>
+<a href="{% url 'crear_autor' %}" class="btn btn-primary mb-3">Nuevo autor</a>
+<a href="{% url 'lista_libros' %}" class="btn btn-outline-secondary mb-3">Ver libros</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Nacionalidad</th>
+            <th>Fecha de nacimiento</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for autor in autores %}
+        <tr>
+            <td>{{ autor.nombre }}</td>
+            <td>{{ autor.correo }}</td>
+            <td>{{ autor.nacionalidad }}</td>
+            <td>{{ autor.fecha_nacimiento }}</td>
+            <td>
+                <a href="{% url 'editar_autor' autor.pk %}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{% url 'eliminar_autor' autor.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No hay autores registrados.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
