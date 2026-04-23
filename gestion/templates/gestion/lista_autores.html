@@ -4,11 +4,18 @@
 
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="h3 mb-0">Autores</h1>
+    <div>
+        <h1 class="h3 mb-0">Autores</h1>
+        <p class="text-muted mb-0">Gestiona tus autores registrados en un solo lugar.</p>
+    </div>
     <div class="d-flex gap-2">
         <a href="{% url 'lista_libros' %}" class="btn btn-outline-secondary">Ver libros</a>
         <a href="{% url 'crear_autor' %}" class="btn btn-primary">Agregar Autor</a>
     </div>
+</div>
+
+<div class="mb-3">
+    <span class="badge text-bg-light border">Total de autores: {{ autores|length }}</span>
 </div>
 
 <div class="card shadow-sm">
@@ -31,7 +38,7 @@
                         <td>{{ autor.nombre }}</td>
                         <td>{{ autor.correo }}</td>
                         <td>{{ autor.nacionalidad }}</td>
-                        <td>{{ autor.fecha_nacimiento }}</td>
+                        <td>{{ autor.fecha_nacimiento|date:"d/m/Y" }}</td>
                         <td class="text-end">
                             <a href="{% url 'editar_autor' autor.pk %}" class="btn btn-sm btn-outline-secondary">Editar</a>
                             <a href="{% url 'eliminar_autor' autor.pk %}" class="btn btn-sm btn-outline-danger">Eliminar</a>

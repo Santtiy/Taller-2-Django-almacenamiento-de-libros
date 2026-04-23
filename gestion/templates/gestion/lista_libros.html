@@ -4,11 +4,18 @@
 
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="h3 mb-0">Libros</h1>
+    <div>
+        <h1 class="h3 mb-0">Libros</h1>
+        <p class="text-muted mb-0">Administra catalogo, genero e ISBN de cada titulo.</p>
+    </div>
     <div class="d-flex gap-2">
         <a href="{% url 'lista_autores' %}" class="btn btn-outline-secondary">Ver autores</a>
         <a href="{% url 'crear_libro' %}" class="btn btn-primary">Agregar Libro</a>
     </div>
+</div>
+
+<div class="mb-3">
+    <span class="badge text-bg-light border">Total de libros: {{ libros|length }}</span>
 </div>
 
 <div class="card shadow-sm">
@@ -32,7 +39,7 @@
                         <td>{{ libro.titulo }}</td>
                         <td>{{ libro.autor.nombre }}</td>
                         <td>{{ libro.genero }}</td>
-                        <td>{{ libro.fecha_publicacion }}</td>
+                        <td>{{ libro.fecha_publicacion|date:"d/m/Y" }}</td>
                         <td>{{ libro.isbn }}</td>
                         <td class="text-end">
                             <a href="{% url 'editar_libro' libro.pk %}" class="btn btn-sm btn-outline-secondary">Editar</a>
